@@ -17,5 +17,3 @@ String str2 = "안녕하세요";
 </html>
 
 
-
-
