@@ -9,6 +9,7 @@
 <meta charset="UTF-8">
 <title>회원제 게시판</title>
 <script type="text/javascript">
+/* 글쓰기 페이지에서 제목과 내용이 입력되었는지 검증하는 JS코드 */
 function validateForm(form) { 
     if (form.title.value == "") {
         alert("제목을 입력하세요.");
@@ -26,6 +27,9 @@ function validateForm(form) {
 <body>
 <jsp:include page="../Common/Link.jsp" />
 <h2>회원제 게시판 - 글쓰기(Write)</h2>
+<!-- 글쓰기 폼은 반드시 post방식으로 제작해야한다. get방식은 파일을 첨부할
+수없고, 전송량도 4Kb로 제한된다. 하지만 post는 전송량의 제한이 없고 이미지,
+음원 등의 파일도 전송할 수 있기때문이다.  -->
 <form name="writeFrm" method="post" action="WriteProcess.jsp"
       onsubmit="return validateForm(this);">
     <table border="1" width="90%">
