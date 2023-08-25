@@ -38,7 +38,23 @@ public class RegistDAO extends JDBConnect {
 	}
 	
 	
-	
+	public boolean idOverlap(String id) {
+		boolean result = false;
+		String sql = "select count(*) from regist_member where id=?";
+		try {			
+			psmt = con.prepareStatement(sql);
+			psmt.setString(1, id);
+			rs = psmt.executeQuery();
+			rs.next();
+			if(rs.getInt(1)==0)
+				result = true;
+		}
+		catch (Exception e) {
+			
+		}		
+		
+		return result;
+	}
 	
 	
 	
