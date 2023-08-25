@@ -232,28 +232,7 @@ public class BoardDAO extends JDBConnect {
         return result;  
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    //게시물 목록 출력시 페이징 기능 추가
+    //게시물 목록 출력시 페이징 기능 추가 
     public List<BoardDTO> selectListPage(Map<String, Object> map) {
         List<BoardDTO> bbs = new ArrayList<BoardDTO>();  
         
@@ -262,30 +241,26 @@ public class BoardDAO extends JDBConnect {
         String query = " SELECT * FROM ( "
         			+ "    SELECT Tb.*, ROWNUM rNum FROM ( "
                     + "        SELECT * FROM board ";
-        //검색어가 있는 경우에만 where을 추가한다. 
+        //검색어가 있는 경우에만 where절을 추가한다. 
         if (map.get("searchWord") != null) {
             query += " WHERE " + map.get("searchField")
                    + " LIKE '%" + map.get("searchWord") + "%' ";
-        }        
-        //between을 통해 게시물의 구간을 결정할 수 있다. 
-        query += "      ORDER BY num DESC "
+        }
+        /* 게시물의 구간을 결정하기 위해 between 혹은 비교연산자를 
+        사용할 수 있다. 아래의 where절은 rNum>? 과 같이 변경할수있다. */
+        query += "      	ORDER BY num DESC "
                + "     ) Tb "
                + " ) "
                + " WHERE rNum BETWEEN ? AND ?";
-        /*
-        between절 대신 비교연산자를 통해 쿼리문을 구성할수도 있다. 
-        ==> where rNum>=? and rNum<=?
-        */ 
 
         try {
-        	//인파라미터가 있는 쿼리문이므로 prepared객체를 생성한다.
+        	//인파라미터가 있는 쿼리문으로 prepared객체 생성
             psmt = con.prepareStatement(query);
-            //인파라미터를 설정한다. 구간의 시작과 끝을 계산한 값이다. 
+            //인파라미터 설정
             psmt.setString(1, map.get("start").toString());
             psmt.setString(2, map.get("end").toString());
-            //쿼리문을 실행하고 결과레코드를 ResultSet으로 반환받는다.
+            //쿼리문 실행 및 ResultSet반환
             rs = psmt.executeQuery();
-            //결과 레코드의 갯수만큼 반복하여 List컬렉션에 저장한다.
             while (rs.next()) {
                 BoardDTO dto = new BoardDTO();
                 

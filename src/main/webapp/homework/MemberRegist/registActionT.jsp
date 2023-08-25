@@ -17,7 +17,7 @@ String mobile = request.getParameter("mobile1")
 				+"-"+request.getParameter("mobile3");
 String sms = request.getParameter("sms");
 
-//DTO객체에 저장하기  
+//DTO객체에 저장하기
 RegistDTO dto = new RegistDTO();
 dto.setId(id);
 dto.setPass(pass);
