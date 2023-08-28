@@ -11,7 +11,7 @@ musthave 계정의 regist_member 테이블에 입력한 아이디가 존재하�
 */
 //만약 중복된 아이디가 없어 사용할 수 있다면 true를 반환
 //중복된 아이디가 있다면 false 반환
-boolean isExist = true;
+boolean isExist = dao.idOverlap(id); 
 %>    
 <!DOCTYPE html>
 <html>
