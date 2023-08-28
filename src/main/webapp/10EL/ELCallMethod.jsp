@@ -1,7 +1,6 @@
 <%@ page import="el.MyELClass"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="mytag" uri="/WEB-INF/MyTagLib.tld" %>    
 <% 
 //정적메서드가 아닌 일반적인 메서드는 객체를 통해 호출해야 하므로
 //객체를 생성한 후 EL에서 접근할 수 있도록 영역에 저장한다. 
@@ -33,11 +32,11 @@ pageContext.setAttribute("myClass", myClass);
     	out.print("숫자가 아닙니다.");
     %>
     
-    <h3>TLD 파일 등록 후 정적 메서드 호출하기</h3>
+    <%-- <h3>TLD 파일 등록 후 정적 메서드 호출하기</h3>
     <ul>
         <li>mytag:isNumber("100") => ${ mytag:isNumber("100") }</li>
         <li>mytag:isNumber("이백") => ${ mytag:isNumber("이백") }</li>
-    </ul> 
+    </ul>  --%>
 </body> 
 </html>
 

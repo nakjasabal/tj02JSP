@@ -39,19 +39,12 @@ if(isExist==true) {
 %>
         <p>
         	입력한 아이디는 사용할 수 있습니다. <br />
-<<<<<<< HEAD
         	<input type="button" value="아이디 사용하기" 
         		onclick="idUse();"/>
         	<form name="overlapFrm">
         		<input type="hidden" name="retype_id" value="<%=id %>" />
         	</form>
-=======
-        	<input type="button" value="아이디 사용하기" onclick="idUse();" />
->>>>>>> branch 'main' of https://github.com/nakjasabal/tj02JSP.git
         </p>
-        <form name="overlapFrm">
-            <input type="hidden" name="retype_id" value="<%=id %>" />
-        </form>
 <% 
 } else {
 %>
