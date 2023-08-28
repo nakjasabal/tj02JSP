@@ -39,9 +39,4 @@ if(result==1){
 else{
 	out.println("입력실패");
 }
-
-
-
-
-
 %>
