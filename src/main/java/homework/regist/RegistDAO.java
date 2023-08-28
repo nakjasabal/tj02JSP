@@ -36,7 +36,7 @@ public class RegistDAO extends JDBConnect {
 		
 		return result;
 	}
-	
+	 
 	//아이디 중복확인을 위한 메서드 정의 
 	public boolean idOverlap(String id) {
 		//초기값은 true로 설정. 중복된 아이디가 없는 경우
@@ -63,13 +63,4 @@ public class RegistDAO extends JDBConnect {
 		//중복된 아이디가 없다면 0이므로 true를 반환한다. 
 		return retValue;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }
