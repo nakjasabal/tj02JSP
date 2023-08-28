@@ -1,6 +1,8 @@
+<%@page import="homework.regist.RegistDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
+//중복확인 팝업창으로 전달되는 아이디를 받는다. 
 String id = request.getParameter("id");
 
 /*
@@ -9,7 +11,8 @@ musthave 계정의 regist_member 테이블에 입력한 아이디가 존재하�
 */
 //만약 중복된 아이디가 없어 사용할 수 있다면 true를 반환
 //중복된 아이디가 있다면 false 반환
-boolean isExist = true; 
+RegistDAO dao = new RegistDAO(application);
+boolean isExist = dao.idOverlap(id);
 %>    
 <!DOCTYPE html>
 <html>
@@ -19,8 +22,10 @@ boolean isExist = true;
 <script> 
     //재입력한 아이디를 부모창으로 전송한다.
     function idUse(){
-        //opener속성을 통해 부모창의 DOM을 선택할 수 있다. 
+        //opener속성을 통해 부모창의 DOM을 선택할 수 있다.
+        //사용가능한 아이디를 부모창으로 전송한다. 
         opener.document.myform.id.value = document.overlapFrm.retype_id.value;
+        //팝업창을 닫는다. 
         self.close();
     }
 </script>
@@ -34,7 +39,11 @@ if(isExist==true) {
 %>
         <p>
         	입력한 아이디는 사용할 수 있습니다. <br />
-        	<input type="button" value="아이디 사용하기" />
+        	<input type="button" value="아이디 사용하기" 
+        		onclick="idUse();"/>
+        	<form name="overlapFrm">
+        		<input type="hidden" name="retype_id" value="<%=id %>" />
+        	</form>
         </p>
 <% 
 } else {
