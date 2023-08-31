@@ -36,15 +36,12 @@ public class JSFunction {
         catch (Exception e) {}
     }
     
+    /* 상단 2개의 메서드는 JSP에서 사용하기 위해 정의하였다. JSP에서 out
+    내장객체를 전달하면 매개변수로 받아서 사용한다. 
+    아래 2개는 서블릿(Servlet)에서 사용하기 위해 메서드 오버로딩을 통해 
+    정의하였다. 서블릿이 직접 요청을 받으므로 response내장객체를 통해
+    화면출력 용도인 PrintWriter 객체를 생성하여 사용한다.  */
     
-    
-    
-    
-    
-    
-    
-    
-     
     public static void alertLocation(HttpServletResponse resp, String msg, String url) {
         try {
         	//컨텐츠 타입을 설정
