@@ -36,21 +36,20 @@ public class ViewController extends HttpServlet {
         dto.setContent(dto.getContent().replaceAll("\r\n", "<br/>"));
         
         //첨부파일 확장자 추출 및 이미지 타입 확인
-//        String ext = null, fileName = dto.getSfile();
-//        if(fileName!=null) {
-//        	ext = fileName.substring(fileName.lastIndexOf(".")+1);
-//        }
-//        String[] mimeStr = {"png","jpg","gif"};
-//        List<String> mimeList = Arrays.asList(mimeStr);
-//        boolean isImage = false;
-//        if(mimeList.contains(ext)) {
-//        	isImage = true;
-//        }
-        
-        
+        String ext = null, fileName = dto.getSfile();
+        if(fileName!=null) {
+        	ext = fileName.substring(fileName.lastIndexOf(".")+1);
+        }
+        String[] mimeStr = {"png","jpg","gif"};
+        List<String> mimeList = Arrays.asList(mimeStr);
+        boolean isImage = false;
+        if(mimeList.contains(ext)) {
+        	isImage = true;
+        }
+                
         // 게시물(dto)을 request영역에 저장한 후 뷰로 포워드한다. 
         req.setAttribute("dto", dto);
-//        req.setAttribute("isImage", isImage);
+        req.setAttribute("isImage", isImage);
         req.getRequestDispatcher("/14MVCBoard/View.jsp").forward(req, resp);
     }
 }

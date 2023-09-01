@@ -7,14 +7,28 @@
 <meta charset="UTF-8">
 <title>파일 첨부형 게시판</title>
 <script type="text/javascript">
-    function validateForm(form) {  // 필수 항목 입력 확인
-        
-        if (form.pass.value == "") {
-            alert("비밀번호를 입력하세요.");
-            form.pass.focus();
-            return false;
-        }
+function validateForm(form) {  // 필수 항목 입력 확인
+    if (form.name.value == "") {
+        alert("작성자를 입력하세요.");
+        form.name.focus();
+        return false;
     }
+    if (form.title.value == "") {
+        alert("제목을 입력하세요.");
+        form.title.focus();
+        return false;
+    }
+    if (form.content.value == "") {
+        alert("내용을 입력하세요.");
+        form.content.focus();
+        return false;
+    }
+    if (form.pass.value == "") {
+        alert("비밀번호를 입력하세요.");
+        form.pass.focus();
+        return false;
+    }
+}
 </script>
 </head>
 <h2>파일 첨부형 게시판 - 글쓰기(Write)</h2>
@@ -27,7 +41,30 @@ get방식과 post방식에 따라 각각 처리할 수 있다.
 <form name="writeFrm" method="post" enctype="multipart/form-data"
       action="../mvcboard/write.do" onsubmit="return validateForm(this);">
 <table border="1" width="90%">
-  
+    <tr>
+        <td>작성자</td>
+        <td>
+            <input type="text" name="name" style="width:150px;" />
+        </td>
+    </tr>
+    <tr>
+        <td>제목</td>
+        <td>
+            <input type="text" name="title" style="width:90%;" />
+        </td>
+    </tr>
+    <tr>
+        <td>내용</td>
+        <td>
+            <textarea name="content" style="width:90%;height:100px;"></textarea>
+        </td>
+    </tr>
+    <tr>
+        <td>첨부 파일</td>
+        <td>
+            <input type="file" name="ofile" />
+        </td>
+    </tr>
     <tr>
         <td>비밀번호</td>
         <td>

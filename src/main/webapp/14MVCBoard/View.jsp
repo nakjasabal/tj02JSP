@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,9 +33,9 @@
         <td>내용</td>
         <td colspan="3" height="100">
         	${ dto.content }
-        	<%-- <c:if test="${ not empty dto.ofile and isImage eq true }">
+        	<c:if test="${ not empty dto.ofile and isImage eq true }">
         		<br><img src="../Uploads/${ dto.sfile }" style="max-width:100%;"/>
-        	</c:if> --%>
+        	</c:if>
         </td>
     </tr>
 
