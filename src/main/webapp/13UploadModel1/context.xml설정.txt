@@ -1,0 +1,3 @@
+톰켓 설정파일 중 context.xml에 다음과 같이 설정 추가
+
+<Context allowCasualMultipartParsing="true">
